@@ -2,6 +2,7 @@
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,31 +10,21 @@
 
 <body>
     <div class="container-xxl bg-white p-0">
-       
+
         @await Component.InvokeAsync("_SpinnerPartial")
-    
+
         @await Component.InvokeAsync("_NavbarPartial")
-       
-        @await Component.InvokeAsync("_SliderPartial")
-      
+
+        @await Component.InvokeAsync("_BookingCoverPartial")
+
         @await Component.InvokeAsync("_ReservationPartial")
-       
-        @await Component.InvokeAsync("_AboutUsPartial")
-        
-        @await Component.InvokeAsync("_OurRoomsPartial")
-      
-        @await Component.InvokeAsync("_TrailerPartial")
-        
-        @await Component.InvokeAsync("_ServicePartial")
-        
-        @await Component.InvokeAsync("_TestimonialPartial")
-     
-        @await Component.InvokeAsync("_TeamPartial")
-      
-       @await Html.PartialAsync("_SubscribePartial.cshtml")
-      
+
+        @await Html.PartialAsync("/Views/Booking/AddBooking.cshtml")
+
+        @await Html.PartialAsync("/Views/Default/_SubscribePartial.cshtml")
+
         @await Component.InvokeAsync("_FooterPartial")
-      
+
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
@@ -41,4 +32,3 @@
 
 </body>
 
-</html>
