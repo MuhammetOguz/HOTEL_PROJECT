@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelProject.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
