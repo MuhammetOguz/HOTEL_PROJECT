@@ -19,14 +19,14 @@ namespace HotelProject.WebApi.Controllers
         [HttpGet]
         public IActionResult StaffList()
         {
-            var values=_staffService.TGetList();
+            var values = _staffService.TGetList();
             return Ok(values);
         }
 
         [HttpPost]
         public IActionResult AddStaff(Staff staff)
         {
-             _staffService.TInsert(staff);
+            _staffService.TInsert(staff);
 
 
             return Ok();
@@ -53,7 +53,15 @@ namespace HotelProject.WebApi.Controllers
 
         public IActionResult GetStaff(int id)
         {
-           var values= _staffService.TGetById(id);
+            var values = _staffService.TGetById(id);
+            return Ok(values);
+        }
+
+        [HttpGet("Last4Staff")]
+
+        public IActionResult Last4Staff()
+        {
+            var values = _staffService.TLast4Staff();
             return Ok(values);
         }
     }

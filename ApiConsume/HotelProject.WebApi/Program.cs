@@ -40,10 +40,8 @@ builder.Services.AddScoped<IGuestService, GuestManager>();
 builder.Services.AddScoped<ISendMessageDal, EfSendMessageDal>();
 builder.Services.AddScoped<ISendMessageService, SendMessageManager>();
 
-builder.Services.AddScoped<IMessageCategoryDal, EfMessageCategoryDal>();
-builder.Services.AddScoped<IMessageCategoryService, MessageCategoryManager>();
-
-
+builder.Services.AddScoped<IAppUserDal,EfAppUserDal>();
+builder.Services.AddScoped<IAppUserService, AppUserManager>();
 
 builder.Services.AddControllers();
 

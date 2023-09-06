@@ -244,9 +244,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MessageCategoryID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -256,8 +253,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ContactID");
-
-                    b.HasIndex("MessageCategoryID");
 
                     b.ToTable("Contacts");
                 });
@@ -285,23 +280,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                     b.HasKey("GuestID");
 
                     b.ToTable("Guests");
-                });
-
-            modelBuilder.Entity("HotelProject.EntityLayer.Concrete.MessageCategory", b =>
-                {
-                    b.Property<int>("MessageCategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageCategoryID"), 1L, 1);
-
-                    b.Property<string>("MessageCategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MessageCategoryID");
-
-                    b.ToTable("MessageCategories");
                 });
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Room", b =>
@@ -595,17 +573,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Contact", b =>
-                {
-                    b.HasOne("HotelProject.EntityLayer.Concrete.MessageCategory", "MessageCategory")
-                        .WithMany("Contacts")
-                        .HasForeignKey("MessageCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MessageCategory");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("HotelProject.EntityLayer.Concrete.AppRole", null)
@@ -655,11 +622,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("HotelProject.EntityLayer.Concrete.MessageCategory", b =>
-                {
-                    b.Navigation("Contacts");
                 });
 #pragma warning restore 612, 618
         }
